@@ -1,0 +1,9 @@
+name: ki-konkret-hackathon
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - gradio
+  - gradio-client
+  - openai
+  #- legacy-cgi

@@ -1,0 +1,10 @@
+Analysiere den erhaltenen Tickettext.
+
+Klassifiziere den Inhalt in eine der folgenden $QUEUE: "netz", "software", "raumbuchung" oder "multimedia".
+Klassifiziere den Inhalt in eine der folgenden $PRIORITY: "sehr dringend", "dringend", "weniger dringend".
+
+Antworte AUSSCHLIESSLICH in diesem JSON-Format:
+{
+    "queue": "$QUEUE",
+    "priority": "$PRIORITY"
+}
