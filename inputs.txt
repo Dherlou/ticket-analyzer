@@ -1,3 +1,8 @@
-Hilfe, ein Netzwerkkabel hat einen Brand verursacht. Bitte sofort helfen!!!
+# sehr dringendes Netzwerkproblem
+Hilfe, ein LAN-Kabel schmort und sprüht Funken! Bitte sofort helfen!!!
 
-Unser Meetingraum ist doppelt belegt. Wir brauchen morgen eine andere Alternative.
+# dringendes Raumbuchungsproblem
+Unser Vorlesungssaal ist doppelt belegt. Wir brauchen spätestens bis morgen eine andere Alternative.
+
+# nicht-dringendes Multimediaproblem:
+Im Zuse-Hörsaal ist ein Lautsprecher defekt. Bitte tauschen Sie diesen in den kommenden Semesterferien aus.

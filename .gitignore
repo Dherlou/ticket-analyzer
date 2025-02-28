@@ -1,2 +1,4 @@
 settings.yml
 .idea
+.gradio
+__pycache__

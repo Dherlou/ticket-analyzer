@@ -1,12 +1,7 @@
-# This is a sample Python script.
-import json
-
-from LLM import LLM
 import gradio as gr
+import json
+from LLM import LLM
 
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 def process(ticket):
     llm = LLM()
     output = llm.analyze_ticket(ticket).choices[0].message.content
@@ -14,15 +9,11 @@ def process(ticket):
     result = json.loads(output)
     return result['queue'], result['priority']
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-
-    # print(llm.create_chat_completion('Was gibt es in Darmstadt zu besichtigen?').choices[0].message.content)
-
+def altes_layout():
     demo = gr.Interface(
         process,
         [
-            gr.TextArea(
+            gr.Text(
                 label="Tickettext"
             ),
         ],
@@ -36,16 +27,46 @@ if __name__ == '__main__':
                 label="Priorität"
             )
         ],
-        #examples=[
-        #    [45, "add", 3],
-        #    [3.14, "divide", 2],
-        #    [144, "multiply", 2.5],
-        #    [0, "subtract", 1.2],
-        #],
-        title="Ticket-Vorverarbeitung",
-        description="Analysiert das eingegebene Ticket und kategorisiert den Inhalt.",
+    title="Ticket-Vorverarbeitung",
+       description="Analysiert das eingegebene Ticket und kategorisiert den Inhalt.",
     )
+    return demo
+
+def neues_layout():
+    with gr.Blocks() as demo:
+        with gr.Row():
+            gr.Label('Ticket-Vorverarbeitung', label='')
+        with gr.Row():
+            with gr.Column(scale=1, min_width=300):
+                tickettext = gr.TextArea(
+                    label="Tickettext"
+                )
+            with gr.Column(scale=1, min_width=300):
+                with gr.Row():
+                    with gr.Column(scale=1, min_width=300):
+                        queue = gr.Radio(
+                            ["netz", "software", "raumbuchung", "multimedia"],
+                            label="Ticket-Queue"
+                        )
+                with gr.Row():
+                    with gr.Column(scale=1, min_width=300):
+                        priority = gr.Radio(
+                            ["sehr dringend", "dringend", "weniger dringend"],
+                            label="Priorität"
+                        )
+
+        with gr.Row():
+            greet_btn = gr.Button("Analysieren")
+            greet_btn.click(
+                fn=process,
+                inputs=[tickettext],
+                outputs=[queue, priority]
+            )
+
+    return demo
+
+if __name__ == '__main__':
+    # demo = altes_layout()
+    demo = neues_layout()
 
     demo.launch(server_port=7860, share=True)
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

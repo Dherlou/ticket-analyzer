@@ -1,4 +1,4 @@
-name: ki-konkret-hackathon
+name: ticket-analyzer
 channels:
   - conda-forge
   - defaults
@@ -6,4 +6,3 @@ dependencies:
   - gradio
   - gradio-client
   - openai
-  #- legacy-cgi
